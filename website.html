@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="he" dir="rtl">
-<head>
-    <meta charset="UTF-8">
+<!-- saved from url=(0104)http://localhost:63342/firstcheck/website.html?_ijt=7ei1as5u0ggrrjubfum1gs675h&_ij_reload=RELOAD_ON_SAVE -->
+<html lang="he" dir="rtl"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Git ו-GitHub: המדריך המלא</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./Git ו-GitHub_ המדריך המלא_files/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap');
 
@@ -245,31 +245,7 @@
             </div>
         </div>
     </div>
-
-    <div class="section" id="setup">
-        <h2><i class="fas fa-tools"></i> התקנה והגדרה ראשונית</h2>
-        <ol class="action-list">
-            <li>
-                <h4>התקנת Git</h4>
-                <p>הורידו גרסה מתאימה מהאתר הרשמי: <a href="https://git-scm.com/download/win">git-scm.com/download/win</a>. לאחר ההתקנה, הפעילו את git-bash.exe וודאו את הגרסה המותקנת.</p>
-                <div class="code-block">
-                    <pre><span class="command">git --version</span></pre>
-                </div>
-            </li>
-            <li>
-                <h4>הגדרת המשתמש האישי</h4>
-                <p>לכל "חבר" במאגר יש שם משתמש וכתובת מייל המוגדרים ב-Git כדי לדעת מי אחראי ל-Commit מסוים.</p>
-                <div class="code-block">
-                    <pre><span class="command">git config --global user.name</span> "Your Name"
-<span class="command">git config --global user.email</span> "youremail@example.com"
-<span class="comment">// בדיקה שהפרטים נקלטו:</span>
-<span class="command">git config --list</span></pre>
-                </div>
-            </li>
-        </ol>
-    </div>
-
-    <div class="section" id="local-commands">
+       <div class="section" id="local-commands">
         <h2><i class="fas fa-terminal"></i> פקודות Git עיקריות (מקומי)</h2>
         <h3>יצירת מאגר (Repository) והוספת קבצים</h3>
         <p>כדי להתחיל לנהל את הפרויקט, עליכם להפוך את התיקייה למאגר Git.</p>
@@ -325,7 +301,45 @@ myproject.pyc
 <span class="command">git diff --staged</span></pre>
         </div>
     </div>
-
+    <div class="section" id="branches">
+        <h2><i class="fas fa-code-branch"></i> ענפים (Branches)</h2>
+        <p>
+            ענף הוא "גרסה" נפרדת של המאגר שלכם. <code>main</code> הוא שם ברירת המחדל לענף הראשי. יצירת ענפים מאפשרת עבודה על תכונות חדשות או תיקונים מבלי לפגוע בגרסה היציבה.
+        </p>
+        <div class="code-block">
+            <pre><span class="comment">// יצירת ענף חדש</span>
+<span class="command">git branch</span> newbranch
+<span class="comment">// מעבר לענף חדש</span>
+<span class="command">git checkout</span> newbranch
+<span class="comment">// דרך קצרה: יצירת ענף ומעבר אליו בפקודה אחת</span>
+<span class="command">git checkout -b</span> version2
+<span class="comment">// צפייה בכל הענפים הקיימים</span>
+<span class="command">git branch</span>
+<span class="comment">// מחיקת ענף</span>
+<span class="command">git branch -D</span> version2</pre>
+        </div>
+    </div><div class="section" id="setup">
+        <h2><i class="fas fa-tools"></i> התקנה והגדרה ראשונית</h2>
+        <ol class="action-list">
+            <li>
+                <h4>התקנת Git</h4>
+                <p>הורידו גרסה מתאימה מהאתר הרשמי: <a href="https://git-scm.com/download/win">git-scm.com/download/win</a>. לאחר ההתקנה, הפעילו את git-bash.exe וודאו את הגרסה המותקנת.</p>
+                <div class="code-block">
+                    <pre><span class="command">git --version</span></pre>
+                </div>
+            </li>
+            <li>
+                <h4>הגדרת המשתמש האישי</h4>
+                <p>לכל "חבר" במאגר יש שם משתמש וכתובת מייל המוגדרים ב-Git כדי לדעת מי אחראי ל-Commit מסוים.</p>
+                <div class="code-block">
+                    <pre><span class="command">git config --global user.name</span> "Your Name"
+<span class="command">git config --global user.email</span> "youremail@example.com"
+<span class="comment">// בדיקה שהפרטים נקלטו:</span>
+<span class="command">git config --list</span></pre>
+                </div>
+            </li>
+        </ol>
+    </div>
     <div class="section" id="github-workflow">
         <h2><i class="fab fa-github"></i> עבודה עם GitHub</h2>
         <p>
@@ -366,24 +380,7 @@ myproject.pyc
         </ol>
     </div>
 
-    <div class="section" id="branches">
-        <h2><i class="fas fa-code-branch"></i> ענפים (Branches)</h2>
-        <p>
-            ענף הוא "גרסה" נפרדת של המאגר שלכם. <code>main</code> הוא שם ברירת המחדל לענף הראשי. יצירת ענפים מאפשרת עבודה על תכונות חדשות או תיקונים מבלי לפגוע בגרסה היציבה.
-        </p>
-        <div class="code-block">
-            <pre><span class="comment">// יצירת ענף חדש</span>
-<span class="command">git branch</span> newbranch
-<span class="comment">// מעבר לענף חדש</span>
-<span class="command">git checkout</span> newbranch
-<span class="comment">// דרך קצרה: יצירת ענף ומעבר אליו בפקודה אחת</span>
-<span class="command">git checkout -b</span> version2
-<span class="comment">// צפייה בכל הענפים הקיימים</span>
-<span class="command">git branch</span>
-<span class="comment">// מחיקת ענף</span>
-<span class="command">git branch -D</span> version2</pre>
-        </div>
-    </div>
+
 
     <div class="section" id="ide-integration">
         <h2><i class="fas fa-laptop-code"></i> אינטגרציה עם סביבות פיתוח</h2>
@@ -394,13 +391,9 @@ myproject.pyc
             <div class="concept-card">
                 <i class="fab fa-python"></i>
                 <h4>PyCharm</h4>
-                <p>הגדרת GitHub: <code>File</code> > <code>Settings</code> > <code>Version Control</code> > <code>GitHub</code>. <br>פתיחת פרויקט: <code>VCS</code> > <code>Checkout from Version Control</code> > <code>Git</code>.</p>
+                <p>הגדרת GitHub: <code>File</code> &gt; <code>Settings</code> &gt; <code>Version Control</code> &gt; <code>GitHub</code>. <br>פתיחת פרויקט: <code>VCS</code> &gt; <code>Checkout from Version Control</code> &gt; <code>Git</code>.</p>
             </div>
-            <div class="concept-card">
-                <i class="fab fa-android"></i>
-                <h4>Android Studio</h4>
-                <p>הגדרת GitHub: <code>File</code> > <code>Settings</code> > <code>Version Control</code> > <code>GitHub</code>. <br>פתיחת פרויקט: <code>VCS</code> > <code>Get from Version Control</code>.</p>
-            </div>
+
         </div>
         <div class="note" style="margin-top: 25px;">
             <p><strong>טיפ:</strong> לאחר הגדרה, כל הפעולות כמו Commit, Push ו-Pull זמינות דרך התפריטים השונים של סביבת הפיתוח.</p>
@@ -465,5 +458,42 @@ myproject.pyc
     </div>
 
 </div>
-</body>
-</html>
+
+
+<script>
+(function() {
+  var ws = new WebSocket('ws://' + window.location.host +
+             '/jb-server-page?reloadMode=RELOAD_ON_SAVE&'+
+             'referrer=' + encodeURIComponent(window.location.pathname));
+  ws.onmessage = function (msg) {
+      if (msg.data === 'reload') {
+          window.location.reload();
+      }
+      if (msg.data.startsWith('update-css ')) {
+          var messageId = msg.data.substring(11);
+          var links = document.getElementsByTagName('link');
+          for (var i = 0; i < links.length; i++) {
+              var link = links[i];
+              if (link.rel !== 'stylesheet') continue;
+              var clonedLink = link.cloneNode(true);
+              var newHref = link.href.replace(/(&|\?)jbUpdateLinksId=\d+/, "$1jbUpdateLinksId=" + messageId);
+              if (newHref !== link.href) {
+                clonedLink.href = newHref;
+              }
+              else {
+                var indexOfQuest = newHref.indexOf('?');
+                if (indexOfQuest >= 0) {
+                  // to support ?foo#hash
+                  clonedLink.href = newHref.substring(0, indexOfQuest + 1) + 'jbUpdateLinksId=' + messageId + '&' +
+                                    newHref.substring(indexOfQuest + 1);
+                }
+                else {
+                  clonedLink.href += '?' + 'jbUpdateLinksId=' + messageId;
+                }
+              }
+              link.replaceWith(clonedLink);
+          }
+      }
+  };
+})();
+</script></body></html>

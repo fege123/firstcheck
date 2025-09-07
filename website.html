@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git ו-GitHub: המדריך המלא</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;700&display=swap');
+
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #e74c3c;
+            --background-color: #ecf0f1;
+            --text-color: #2c3e50;
+            --card-background: #ffffff;
+            --code-background: #2d3436;
+        }
+
+        body {
+            font-family: 'Heebo', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            direction: rtl;
+            text-align: right;
+        }
+
+        .header {
+            background: linear-gradient(45deg, #2c3e50, #16a085);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            border-bottom-left-radius: 60px;
+            border-bottom-right-radius: 60px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+        .header h1 {
+            font-size: 3.8em;
+            margin: 0;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            font-weight: 700;
+        }
+        .header p {
+            font-size: 1.4em;
+            margin-top: 15px;
+            opacity: 0.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .section {
+            background: var(--card-background);
+            padding: 50px;
+            margin-bottom: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .section:hover {
+            transform: translateY(-5px);
+        }
+
+        h2 {
+            font-size: 2.8em;
+            color: var(--text-color);
+            border-bottom: 5px solid var(--primary-color);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            position: relative;
+            display: inline-block;
+        }
+        h2 i {
+            margin-left: 15px;
+            color: var(--secondary-color);
+        }
+
+        h3 {
+             font-size: 1.8em;
+             border-right: 4px solid var(--secondary-color);
+             padding-right: 15px;
+             margin-bottom: 20px;
+        }
+
+        .concept-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        .concept-card {
+            background-color: var(--background-color);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+            transition: background-color 0.3s ease;
+        }
+        .concept-card:hover {
+            background-color: #dbe6e9;
+        }
+        .concept-card i {
+            font-size: 4em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        .concept-card h4 {
+            font-size: 1.5em;
+            color: var(--text-color);
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .code-block {
+            background: var(--code-background);
+            color: #f5f6fa;
+            padding: 25px;
+            border-radius: 12px;
+            overflow-x: auto;
+            margin: 25px 0;
+            direction: ltr;
+            text-align: left;
+            font-family: 'Courier New', Courier, monospace;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        .code-block:hover {
+            transform: scale(1.02);
+        }
+
+        .code-block pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+        .comment {
+            color: #95a5a6;
+        }
+        .command {
+            color: #f1c40f;
+            font-weight: bold;
+        }
+
+        .action-list {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 25px;
+        }
+        .action-list li {
+            background-color: var(--card-background);
+            border-right: 5px solid var(--primary-color);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .action-list li h4 {
+            margin-top: 0;
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+
+        .note {
+            background-color: #e8f6f3;
+            border-right: 5px solid #1abc9c;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: right;
+        }
+        .highlight {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+    </style>
+</head>
+<body>
+
+<div class="header">
+    <h1><i class="fas fa-code-branch"></i> Git ו-GitHub: המדריך המלא לפיתוח מושלם</h1>
+    <p>מדריך מקיף וחדשני להתקנה, הגדרה ושימוש ב-Git וב-GitHub.</p>
+</div>
+
+<div class="container">
+
+    <div class="section" id="what-is-git">
+        <h2><i class="fas fa-question-circle"></i> מה זה Git?</h2>
+        <p>
+            <span class="highlight">Git</span> היא מערכת חכמה לניהול גרסאות (Version Control System). היא מאפשרת לצוותים לעבוד על אותו פרויקט, לעקוב אחר שינויים ולנהל גרסאות בצורה חכמה. זהו כלי חובה לכל מפתח. Git עוקבת אחר שינויים בקבצים ומסמכים והיא מהווה מעין מאגר (Repository) העוקב אחר שינויים בקבצי הקוד של הפרויקט שלנו.
+        </p>
+        <div class="note">
+            <p>
+                Git מאפשרת לנו לעבוד בצוות, כל אחד על חלקו ולשגר את השינויים למאגר אחד המכיל את כל השינויים של כולם. שמו המקצועי של מאגר זה הוא "Repository".
+            </p>
+            <p>
+                כל שינוי המבוצע ומעודכן במאגר נקרא "Commit". כל Commit כולל תיאור קצר המפרט על השינוי וכן את שם המפתח האחראי.
+            </p>
+        </div>
+    </div>
+
+    <div class="section" id="benefits">
+        <h2><i class="fas fa-handshake"></i> היתרונות בשימוש ב-Git</h2>
+        <div class="concept-grid">
+            <div class="concept-card">
+                <i class="fas fa-users"></i>
+                <h4>עבודה מסודרת בצוות</h4>
+                <p>השימוש ב-Git עוזר לעבוד כיחיד ובעיקר כצוות באופן מסודר וטוב יותר.</p>
+            </div>
+            <div class="concept-card">
+                <i class="fas fa-undo-alt"></i>
+                <h4>חזרה מהירה לגרסאות קודמות</h4>
+                <p>מאפשר לחזור לגרסאות ישנות במהירות ובפשטות.</p>
+            </div>
+            <div class="concept-card">
+                <i class="fas fa-cloud-upload-alt"></i>
+                <h4>גיבוי חכם ומאובטח</h4>
+                <p>מהווה גיבוי חכם עם תיעוד גרסאות לקבצי הפרויקט.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="three-stages">
+        <h2><i class="fas fa-route"></i> שלושת האזורים העיקריים של Git</h2>
+        <div class="concept-grid">
+            <div class="concept-card">
+                <i class="fas fa-folder-open" style="color: #c0392b;"></i>
+                <h4>Working Copy</h4>
+                <p>קבצי הפרויקט על המחשב המקומי. קבצים ששונו ולא הוספו למעקב יופיעו בצבע <span style="color: #c0392b; font-weight: bold;">אדום</span>.</p>
+            </div>
+            <div class="concept-card">
+                <i class="fas fa-clipboard-check" style="color: #27ae60;"></i>
+                <h4>Staging Copy</h4>
+                <p>אזור המתנה לקבצים שהוספתם למעקב באמצעות <code>git add</code>. קבצים אלו יופיעו בצבע <span style="color: #27ae60; font-weight: bold;">ירוק</span>.</p>
+            </div>
+            <div class="concept-card">
+                <i class="fas fa-cloud" style="color: #34495e;"></i>
+                <h4>Committed Copy</h4>
+                <p>הקבצים שאושרה עליהם שמירה (Commit). השינוי נדחף למאגר והופך לחלק מההיסטוריה.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="setup">
+        <h2><i class="fas fa-tools"></i> התקנה והגדרה ראשונית</h2>
+        <ol class="action-list">
+            <li>
+                <h4>התקנת Git</h4>
+                <p>הורידו גרסה מתאימה מהאתר הרשמי: <a href="https://git-scm.com/download/win">git-scm.com/download/win</a>. לאחר ההתקנה, הפעילו את git-bash.exe וודאו את הגרסה המותקנת.</p>
+                <div class="code-block">
+                    <pre><span class="command">git --version</span></pre>
+                </div>
+            </li>
+            <li>
+                <h4>הגדרת המשתמש האישי</h4>
+                <p>לכל "חבר" במאגר יש שם משתמש וכתובת מייל המוגדרים ב-Git כדי לדעת מי אחראי ל-Commit מסוים.</p>
+                <div class="code-block">
+                    <pre><span class="command">git config --global user.name</span> "Your Name"
+<span class="command">git config --global user.email</span> "youremail@example.com"
+<span class="comment">// בדיקה שהפרטים נקלטו:</span>
+<span class="command">git config --list</span></pre>
+                </div>
+            </li>
+        </ol>
+    </div>
+
+    <div class="section" id="local-commands">
+        <h2><i class="fas fa-terminal"></i> פקודות Git עיקריות (מקומי)</h2>
+        <h3>יצירת מאגר (Repository) והוספת קבצים</h3>
+        <p>כדי להתחיל לנהל את הפרויקט, עליכם להפוך את התיקייה למאגר Git.</p>
+        <div class="code-block">
+            <pre><span class="comment">// בצעו זאת בתיקיית הפרויקט הרצויה.</span>
+<span class="command">git init</span>
+<span class="comment">// לאחר מכן, הוסיפו את כל הקבצים למעקב:</span>
+<span class="command">git add .</span></pre>
+        </div>
+
+        <h3>שמירת שינויים (Commit)</h3>
+        <p>בצעו שמירה של השינויים עם תיאור מפורט. <span class="highlight">שימו לב: לא מומלץ להשתמש ב-git commit -am כיוון שאינו מאפשר חזרה לאחור.</span></p>
+        <div class="code-block">
+            <pre><span class="command">git commit -m</span> "תיאור השינוי שבוצע"</pre>
+        </div>
+
+        <h3>ניהול קבצים</h3>
+        <div class="code-block">
+            <pre><span class="comment">// בדיקת סטטוס הקבצים</span>
+<span class="command">git status</span>
+<span class="comment">// ביטול הוספה של קובץ לאזור ה-Staging</span>
+<span class="command">git rm --cached</span> [שם-קובץ]
+<span class="comment">// מחיקת קובץ</span>
+<span class="command">git rm</span> [שם-קובץ]
+<span class="comment">// העברת קובץ</span>
+<span class="command">git mv</span> [שם-קובץ] [תיקיית-יעד/שם-קובץ]</pre>
+        </div>
+    </div>
+
+    <div class="section" id="advanced-commands">
+        <h2><i class="fas fa-list-ul"></i> פקודות מתקדמות</h2>
+        <h3>קובץ .gitignore</h3>
+        <p>קובץ המורה ל-Git להתעלם מקבצים או תיקיות ספציפיות שלא תרצו לכלול במאגר. לדוגמה, קבצי יומן או קבצי הרצה.</p>
+        <div class="code-block">
+            <pre><span class="comment">// יצירת הקובץ .gitignore</span>
+<span class="command">touch .gitignore</span>
+<span class="comment">// לאחר יצירתו, יש לערוך אותו ולהוסיף שמות של קבצים/תיקיות להורדה.</span>
+<span class="comment">// לדוגמה, בתוך הקובץ:</span>
+myproject.pyc
+*.log
+/temp/
+<span class="comment">// מומלץ להוסיף את הקובץ למאגר:</span>
+<span class="command">git add .gitignore</span></pre>
+        </div>
+
+        <h3>צפייה בהיסטוריה והשוואת גרסאות</h3>
+        <div class="code-block">
+            <pre><span class="comment">// צפייה ב-commit-ים קודמים</span>
+<span class="command">git log</span>
+<span class="comment">// השוואה בין ה-Working Copy ל-Repository</span>
+<span class="command">git diff</span>
+<span class="comment">// השוואה בין ה-Working Copy ל-Staging Area</span>
+<span class="command">git diff --staged</span></pre>
+        </div>
+    </div>
+
+    <div class="section" id="github-workflow">
+        <h2><i class="fab fa-github"></i> עבודה עם GitHub</h2>
+        <p>
+            GitHub הוא שירות ענן המהווה מעין רשת חברתית ל-Git. הוא מאפשר לשתף ולנהל את הפרויקטים בענן.
+        </p>
+        <ol class="action-list">
+            <li>
+                <h4>הגדרת מאגר מרוחק (Remote)</h4>
+                <p>
+                    לאחר יצירת מאגר ב-GitHub, העתיקו את ה-URL שלו וחברו אותו למאגר המקומי שלכם. <code>origin</code> הוא הכינוי המקובל למאגר המרוחק.
+                </p>
+                <div class="code-block">
+                    <pre><span class="command">git remote add origin</span> https://github.com/YourUserName/your-repo.git</pre>
+                </div>
+            </li>
+            <li>
+                <h4>שליחה וקבלת עדכונים מהמאגר המרוחק</h4>
+                <p>
+                    <span class="highlight">פקודת Push</span>: נועדה לדחוף שינויים מהמחשב המקומי לשרת המרוחק.
+                </p>
+                <div class="code-block">
+                    <pre><span class="command">git push -u origin main</span></pre>
+                </div>
+                <p>
+                    <span class="highlight">פקודת Pull</span>: נועדה למשוך שינויים מהשרת המרוחק למחשב המקומי.
+                </p>
+                <div class="code-block">
+                    <pre><span class="command">git pull origin main</span></pre>
+                </div>
+            </li>
+            <li>
+                <h4>יצירת עותק מקומי ממאגר קיים (Clone)</h4>
+                <p>פקודה זו יוצרת עותק של מאגר מרוחק על המחשב שלכם, כולל כל ההיסטוריה שלו.</p>
+                <div class="code-block">
+                    <pre><span class="command">git clone</span> https://github.com/twbs/bootstrap.git</pre>
+                </div>
+            </li>
+        </ol>
+    </div>
+
+    <div class="section" id="branches">
+        <h2><i class="fas fa-code-branch"></i> ענפים (Branches)</h2>
+        <p>
+            ענף הוא "גרסה" נפרדת של המאגר שלכם. <code>main</code> הוא שם ברירת המחדל לענף הראשי. יצירת ענפים מאפשרת עבודה על תכונות חדשות או תיקונים מבלי לפגוע בגרסה היציבה.
+        </p>
+        <div class="code-block">
+            <pre><span class="comment">// יצירת ענף חדש</span>
+<span class="command">git branch</span> newbranch
+<span class="comment">// מעבר לענף חדש</span>
+<span class="command">git checkout</span> newbranch
+<span class="comment">// דרך קצרה: יצירת ענף ומעבר אליו בפקודה אחת</span>
+<span class="command">git checkout -b</span> version2
+<span class="comment">// צפייה בכל הענפים הקיימים</span>
+<span class="command">git branch</span>
+<span class="comment">// מחיקת ענף</span>
+<span class="command">git branch -D</span> version2</pre>
+        </div>
+    </div>
+
+    <div class="section" id="ide-integration">
+        <h2><i class="fas fa-laptop-code"></i> אינטגרציה עם סביבות פיתוח</h2>
+        <p>
+            סביבות פיתוח כמו PyCharm ו-Android Studio מציעות תמיכה מובנית מלאה ב-Git, כך שאין צורך להשתמש בטרמינל.
+        </p>
+        <div class="concept-grid">
+            <div class="concept-card">
+                <i class="fab fa-python"></i>
+                <h4>PyCharm</h4>
+                <p>הגדרת GitHub: <code>File</code> > <code>Settings</code> > <code>Version Control</code> > <code>GitHub</code>. <br>פתיחת פרויקט: <code>VCS</code> > <code>Checkout from Version Control</code> > <code>Git</code>.</p>
+            </div>
+            <div class="concept-card">
+                <i class="fab fa-android"></i>
+                <h4>Android Studio</h4>
+                <p>הגדרת GitHub: <code>File</code> > <code>Settings</code> > <code>Version Control</code> > <code>GitHub</code>. <br>פתיחת פרויקט: <code>VCS</code> > <code>Get from Version Control</code>.</p>
+            </div>
+        </div>
+        <div class="note" style="margin-top: 25px;">
+            <p><strong>טיפ:</strong> לאחר הגדרה, כל הפעולות כמו Commit, Push ו-Pull זמינות דרך התפריטים השונים של סביבת הפיתוח.</p>
+        </div>
+    </div>
+
+    <div class="section" id="more-concepts">
+        <h2><i class="fas fa-book-open"></i> להעמקה נוספת</h2>
+        <div class="note" style="background-color: #f1f8e9; border-right: 5px solid #689f38;">
+            <h3>דף פקודות Git (Git Cheat Sheet)</h3>
+            <p>
+                רוצים להכיר עוד פקודות ומושגים? הורידו את דף הפקודות המקיף הבא בפורמט PDF, שיעזור לכם להפוך למומחים ב-Git:
+            </p>
+            <p style="text-align: center;">
+                <a href="https://moodle.mashov.info/370395/pluginfile.php/97712/mod_resource/content/0/Git-Cheat-Sheet.pdf" target="_blank" style="display: inline-block; padding: 10px 20px; background-color: #689f38; color: white; text-decoration: none; border-radius: 5px; font-weight: bold;">
+                    <i class="fas fa-download"></i> הורד דף פקודות Git
+                </a>
+            </p>
+        </div>
+    </div>
+  <div class="section" id="exercise">
+    <h2><i class="fas fa-tasks"></i> תרגיל לתלמידים</h2>
+    <p>
+        כעת הגיע הזמן ליישם את מה שלמדתם:
+    </p>
+    <ol class="action-list">
+        <li>
+            <h4>התחברות למאגר</h4>
+            <p>התחברו למאגר (<strong>repository</strong>) שלנו ב-GitHub.</p>
+        </li>
+        <li>
+            <h4>יצירת קובץ חדש</h4>
+            <p>צרו קובץ חדש בשם שלכם.</p>
+        </li>
+        <li>
+            <h4>הוספת תוכן לקובץ</h4>
+            <p>הוסיפו תוכן כלשהו לקובץ, למשל את שמכם.</p>
+        </li>
+        <li>
+            <h4>שמירת השינוי</h4>
+            <p>בצעו <strong>Commit</strong> כדי לשמור את השינוי במאגר המקומי שלכם.</p>
+        </li>
+    </ol>
+    <div class="note">
+        <p><strong>מטרה:</strong> בסיום התרגיל, כל תלמיד אמור לראות את הקובץ שלו במאגר המקומי וב-GitHub.</p>
+    </div>
+</div>
+    <div class="section" id="summary">
+        <h2><i class="fas fa-chart-line"></i> סיכום</h2>
+        <p>
+            ניהול תצורה יעיל באמצעות Git ו-GitHub מאפשר:
+        </p>
+        <ul>
+            <li>שליטה מלאה בכל תהליך השינויים בקוד.</li>
+            <li>זיהוי חד-ערכי וברור של גרסאות, קשרים ופרטי תצורה.</li>
+            <li>ניהול גרסאות והיסטוריה לכל סוג קובץ.</li>
+            <li>יכולת בנייה ושחזור של כל גרסה.</li>
+            <li>מעקב אחר קשרים בין רכיבי תוכנה.</li>
+            <li>יכולת דיווח והעברת מידע שוטפת בין כל הגורמים.</li>
+            <li>חזרה לגרסה קודמת של המוצר תוך ביצוע שינויים נדרשים.</li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>
